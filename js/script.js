@@ -5,6 +5,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  initHeaderScroll();
+  initHeroCarousel();
+  initCarousels();
+  initScrollReveal();
+  initCounters();
   initWorkoutTracker();
   initBMICalculator();
   initWaterTracker();
@@ -23,15 +28,203 @@ function initNavigation() {
 
   toggle.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
     toggle.setAttribute('aria-expanded', isOpen);
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
+      toggle.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+}
+
+/* ============================================
+   Header Scroll Effect
+   ============================================ */
+function initHeaderScroll() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ============================================
+   Hero Background Carousel
+   ============================================ */
+function initHeroCarousel() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+
+  if (slides.length === 0) return;
+
+  let current = 0;
+  let interval;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    if (dots[current]) dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    if (dots[current]) dots[current].classList.add('active');
+  }
+
+  function startAuto() {
+    interval = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  function resetAuto() {
+    clearInterval(interval);
+    startAuto();
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(Number(dot.dataset.slide));
+      resetAuto();
+    });
+  });
+
+  startAuto();
+}
+
+/* ============================================
+   Content Carousels
+   ============================================ */
+function initCarousels() {
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const prevBtn = carousel.parentElement.querySelector('.carousel-prev');
+    const nextBtn = carousel.parentElement.querySelector('.carousel-next');
+    const indicators = carousel.parentElement.querySelectorAll('.carousel-indicator');
+
+    if (!track || slides.length === 0) return;
+
+    let current = 0;
+    let interval;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      indicators.forEach((ind, i) => ind.classList.toggle('active', i === current));
+    }
+
+    function startAuto() {
+      interval = setInterval(() => goTo(current + 1), 6000);
+    }
+
+    function resetAuto() {
+      clearInterval(interval);
+      startAuto();
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    }
+
+    indicators.forEach(ind => {
+      ind.addEventListener('click', () => {
+        goTo(Number(ind.dataset.index));
+        resetAuto();
+      });
+    });
+
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        goTo(diff > 0 ? current + 1 : current - 1);
+        resetAuto();
+      }
+    }, { passive: true });
+
+    startAuto();
+  });
+}
+
+/* ============================================
+   Scroll Reveal Animations
+   ============================================ */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal');
+  if (elements.length === 0) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+}
+
+/* ============================================
+   Animated Counters
+   ============================================ */
+function initCounters() {
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length === 0) return;
+
+  const animateCounter = el => {
+    const target = Number(el.dataset.count);
+    const format = el.dataset.format;
+    const duration = 2000;
+    const start = performance.now();
+
+    const step = now => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.floor(eased * target);
+
+      if (format === 'k') {
+        el.textContent = progress >= 1 ? `${target}K` : value;
+      } else if (target >= 1000) {
+        el.textContent = value.toLocaleString();
+      } else {
+        el.textContent = value;
+      }
+
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(el => observer.observe(el));
 }
 
 /* ============================================
@@ -143,10 +336,10 @@ function initBMICalculator() {
 }
 
 function getBMICategory(bmi) {
-  if (bmi < 18.5) return { label: 'Underweight', color: '#3498db' };
-  if (bmi < 25) return { label: 'Healthy Weight', color: '#00c896' };
-  if (bmi < 30) return { label: 'Overweight', color: '#f0a500' };
-  return { label: 'Obese', color: '#e94560' };
+  if (bmi < 18.5) return { label: 'Underweight', color: '#3b82f6' };
+  if (bmi < 25) return { label: 'Healthy Weight', color: '#22c55e' };
+  if (bmi < 30) return { label: 'Overweight', color: '#f59e0b' };
+  return { label: 'Obese', color: '#e50914' };
 }
 
 /* ============================================
@@ -323,7 +516,7 @@ function updateCalorieDisplay() {
   if (consumedEl) consumedEl.textContent = consumed;
   if (remainingEl) {
     remainingEl.textContent = remaining;
-    remainingEl.style.color = consumed > goal ? '#e94560' : '';
+    remainingEl.style.color = consumed > goal ? '#e50914' : '';
   }
   if (goalInput) goalInput.value = goal;
 

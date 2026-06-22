@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FitTrack Pro – Personal Fitness Tracker for workouts, BMI, water intake and calorie goals.">
-  <title>FitTrack Pro – Home</title>
+  <title>FitTrack Pro – Transform Your Body</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <nav class="navbar" aria-label="Main navigation">
       <a href="index.html" class="logo">FitTrack <span>Pro</span></a>
       <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -25,81 +25,352 @@
         <li><a href="water.html">Water</a></li>
         <li><a href="calories.html">Calories</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="workout.html">Get Started</a></li>
       </ul>
     </nav>
   </header>
 
-  <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-content fade-in">
-        <h1 id="hero-title">Track Your Fitness Journey</h1>
-        <p>Monitor workouts, calories, water intake and BMI — all in one place.</p>
-        <a href="workout.html" class="btn btn-primary float-anim">Start Tracking</a>
+  <main id="main-content" class="home-main">
+    <!-- Hero Section with Background Carousel -->
+    <section class="hero-full" aria-labelledby="hero-title">
+      <div class="hero-carousel" aria-hidden="true">
+        <div class="hero-slide active">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80" alt="" loading="eager">
+        </div>
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50e?w=1920&q=80" alt="" loading="lazy">
+        </div>
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=80" alt="" loading="lazy">
+        </div>
       </div>
-      <div class="hero-image float-anim" aria-hidden="true">
-        <div class="hero-icon">💪</div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-content-wrap">
+        <div class="hero-text reveal">
+          <span class="section-label">Your Fitness Journey Starts Here</span>
+          <h1 id="hero-title">
+            Unleash Your
+            <span class="highlight">Inner Strength</span>
+          </h1>
+          <p>Track workouts, monitor calories, stay hydrated, and crush your BMI goals — all in one powerful fitness platform built for champions.</p>
+          <div class="hero-buttons">
+            <a href="workout.html" class="btn btn-primary">Start Tracking</a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
+          <div class="hero-stats-inline">
+            <div class="hero-stat-item">
+              <strong data-count="500">0</strong>
+              <span>Workouts Logged</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong data-count="100">0</strong>
+              <span>Active Users</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong data-count="10" data-format="k">0</strong>
+              <span>K+ Calories Tracked</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-card-stack">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80" alt="Athlete lifting weights in a modern gym" loading="eager">
+            <div class="hero-badge">
+              <div class="hero-badge-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.3.5-2.5 1.5-3.5z"/></svg>
+              </div>
+              <div class="hero-badge-text">
+                <strong>Today's Goal</strong>
+                <span>Crush your workout!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dots" role="tablist" aria-label="Hero background slides">
+        <button class="hero-dot active" aria-label="Slide 1" data-slide="0"></button>
+        <button class="hero-dot" aria-label="Slide 2" data-slide="1"></button>
+        <button class="hero-dot" aria-label="Slide 3" data-slide="2"></button>
       </div>
     </section>
 
+    <!-- Programs Carousel -->
+    <section class="carousel-section" aria-labelledby="programs-heading">
+      <div class="container">
+        <div class="carousel-header reveal">
+          <span class="section-label">Training Programs</span>
+          <h2 id="programs-heading" class="section-title">Find Your Perfect Workout</h2>
+          <p class="section-subtitle">From strength training to cardio — discover programs designed to push your limits.</p>
+        </div>
+
+        <div class="carousel" id="programs-carousel">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <div class="carousel-slide-inner">
+                <div class="carousel-slide-img">
+                  <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80" alt="Strength training with barbell" loading="lazy">
+                </div>
+                <div class="carousel-slide-content">
+                  <span class="carousel-slide-tag">Strength</span>
+                  <h3>Power Lifting</h3>
+                  <p>Build raw strength with compound movements. Track sets, reps, and progressive overload to maximize muscle growth and power output.</p>
+                  <a href="workout.html" class="btn btn-outline-red">Start Program</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="carousel-slide-inner">
+                <div class="carousel-slide-img">
+                  <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80" alt="Runner on a trail at sunrise" loading="lazy">
+                </div>
+                <div class="carousel-slide-content">
+                  <span class="carousel-slide-tag">Cardio</span>
+                  <h3>Endurance Running</h3>
+                  <p>Boost your cardiovascular health with structured running programs. Log distance, pace, and duration to watch your stamina soar.</p>
+                  <a href="workout.html" class="btn btn-outline-red">Start Program</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="carousel-slide-inner">
+                <div class="carousel-slide-img">
+                  <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" alt="Yoga and flexibility training" loading="lazy">
+                </div>
+                <div class="carousel-slide-content">
+                  <span class="carousel-slide-tag">Flexibility</span>
+                  <h3>Yoga &amp; Recovery</h3>
+                  <p>Balance intense training with recovery sessions. Improve flexibility, reduce injury risk, and enhance overall performance.</p>
+                  <a href="workout.html" class="btn btn-outline-red">Start Program</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" aria-label="Previous program">&#8592;</button>
+          <div class="carousel-indicators" id="programs-indicators">
+            <button class="carousel-indicator active" aria-label="Program 1" data-index="0"></button>
+            <button class="carousel-indicator" aria-label="Program 2" data-index="1"></button>
+            <button class="carousel-indicator" aria-label="Program 3" data-index="2"></button>
+          </div>
+          <button class="carousel-btn carousel-next" aria-label="Next program">&#8594;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motivation Quote -->
     <section class="quote-section" aria-labelledby="quote-heading">
       <h2 id="quote-heading" class="visually-hidden">Motivation</h2>
-      <blockquote class="quote fade-in">
-        <p>"The only bad workout is the one that didn't happen."</p>
-        <cite>— Unknown</cite>
+      <blockquote class="quote reveal">
+        <p>"The only bad workout is the one that didn't happen. Push past your limits — your future self will thank you."</p>
+        <cite>— FitTrack Pro Motto</cite>
       </blockquote>
     </section>
 
+    <!-- Stats Section -->
     <section class="stats-section" aria-labelledby="stats-heading">
-      <h2 id="stats-heading">Fitness Statistics</h2>
-      <div class="stats">
-        <article class="stat-card fade-in">
-          <div class="stat-icon" aria-hidden="true">🏋️</div>
-          <h3>500+</h3>
-          <p>Workouts Logged</p>
-        </article>
-        <article class="stat-card fade-in">
-          <div class="stat-icon" aria-hidden="true">👥</div>
-          <h3>100+</h3>
-          <p>Active Users</p>
-        </article>
-        <article class="stat-card fade-in">
-          <div class="stat-icon" aria-hidden="true">🔥</div>
-          <h3>10K+</h3>
-          <p>Calories Tracked</p>
-        </article>
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">By The Numbers</span>
+          <h2 id="stats-heading" class="section-title">Fitness Statistics</h2>
+        </div>
+        <div class="stats">
+          <article class="stat-card reveal">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m17.5 6.5-11 11"/><path d="M6 7v4"/><path d="M18 7v4"/><path d="M6 17v-4"/><path d="M18 17v-4"/></svg>
+            </div>
+            <h3 data-count="500">0</h3>
+            <p>Workouts Logged</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 data-count="100">0</h3>
+            <p>Active Users</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.3.5-2.5 1.5-3.5z"/></svg>
+            </div>
+            <h3 data-count="10" data-format="k">0</h3>
+            <p>K+ Calories Tracked</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <h3 data-count="2500">0</h3>
+            <p>Glasses of Water</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="features-section" aria-labelledby="features-heading">
-      <h2 id="features-heading">What You Can Track</h2>
-      <div class="features-grid">
-        <a href="workout.html" class="feature-card fade-in">
-          <span class="feature-icon" aria-hidden="true">🏃</span>
-          <h3>Workouts</h3>
-          <p>Log exercises and track your daily activity.</p>
-        </a>
-        <a href="bmi.html" class="feature-card fade-in">
-          <span class="feature-icon" aria-hidden="true">📊</span>
-          <h3>BMI Calculator</h3>
-          <p>Calculate your Body Mass Index instantly.</p>
-        </a>
-        <a href="water.html" class="feature-card fade-in">
-          <span class="feature-icon" aria-hidden="true">💧</span>
-          <h3>Water Intake</h3>
-          <p>Stay hydrated with daily water tracking.</p>
-        </a>
-        <a href="calories.html" class="feature-card fade-in">
-          <span class="feature-icon" aria-hidden="true">🍎</span>
-          <h3>Calorie Goal</h3>
-          <p>Set goals and track consumed calories.</p>
-        </a>
+    <!-- Features Section -->
+    <section class="features-section" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">All-In-One Tracker</span>
+          <h2 id="features-heading" class="section-title">What You Can Track</h2>
+          <p class="section-subtitle">Everything you need to stay on top of your health and fitness goals.</p>
+        </div>
+        <div class="features-grid">
+          <a href="workout.html" class="feature-card reveal">
+            <div class="feature-card-img">
+              <img src="images/features/workout.jpg" alt="Man lifting dumbbells in the gym" loading="lazy">
+            </div>
+            <div class="feature-card-body">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m17.5 6.5-11 11"/><path d="M6 7v4"/><path d="M18 7v4"/><path d="M6 17v-4"/><path d="M18 17v-4"/></svg>
+              </span>
+              <h3>Workouts</h3>
+              <p>Log exercises and track your daily activity with ease.</p>
+              <span class="feature-link">Track Now →</span>
+            </div>
+          </a>
+          <a href="bmi.html" class="feature-card reveal">
+            <div class="feature-card-img">
+              <img src="images/features/bmi.jpg" alt="Doctor with stethoscope for health and BMI assessment" loading="lazy">
+            </div>
+            <div class="feature-card-body">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+              </span>
+              <h3>BMI Calculator</h3>
+              <p>Calculate your Body Mass Index instantly and accurately.</p>
+              <span class="feature-link">Calculate →</span>
+            </div>
+          </a>
+          <a href="water.html" class="feature-card reveal">
+            <div class="feature-card-img">
+              <img src="images/features/water.jpg" alt="Glass of fresh water for hydration" loading="lazy">
+            </div>
+            <div class="feature-card-body">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </span>
+              <h3>Water Intake</h3>
+              <p>Stay hydrated with daily water tracking and goals.</p>
+              <span class="feature-link">Hydrate →</span>
+            </div>
+          </a>
+          <a href="calories.html" class="feature-card reveal">
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="Healthy balanced meal" loading="lazy">
+            </div>
+            <div class="feature-card-body">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-3 6-6.79 0-3.25-2.39-4.76-4.86-5.67"/><path d="M12 20.94c-1.5 0-2.75-1.06-4-1.06-3 0-6-3-6-6.79C2 9.84 4.39 8.33 6.86 7.42"/><path d="M12 14c-3.5-2.5-3.5-7 0-9.5"/><circle cx="12" cy="5" r="1"/></svg>
+              </span>
+              <h3>Calorie Goal</h3>
+              <p>Set goals and track consumed calories every day.</p>
+              <span class="feature-link">Log Meals →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Success Stories</span>
+          <h2 id="testimonials-heading" class="section-title">What Our Users Say</h2>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <p>"FitTrack Pro completely changed how I approach fitness. Tracking everything in one place keeps me accountable every single day."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Alex M." loading="lazy">
+              <div>
+                <strong>Alex M.</strong>
+                <span>Lost 15kg in 6 months</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <p>"The calorie tracker and water intake features are game-changers. I finally hit my hydration goals consistently for the first time."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah K." loading="lazy">
+              <div>
+                <strong>Sarah K.</strong>
+                <span>Marathon Runner</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <p>"Clean design, easy to use, and the BMI calculator helped me understand my health better. Highly recommend to anyone serious about fitness."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="James R." loading="lazy">
+              <div>
+                <strong>James R.</strong>
+                <span>Personal Trainer</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="cta-box reveal">
+        <h2 id="cta-heading">Ready to Transform?</h2>
+        <p>Join thousands of fitness enthusiasts who trust FitTrack Pro to reach their goals.</p>
+        <a href="workout.html" class="btn">Start Your Journey Today</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 FitTrack Pro. All rights reserved.</p>
-    <p>Built with HTML, CSS &amp; JavaScript</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">FitTrack <span>Pro</span></a>
+        <p>Your all-in-one fitness companion. Track workouts, nutrition, hydration, and body metrics to become the best version of yourself.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Trackers</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="bmi.html">BMI Calculator</a></li>
+          <li><a href="water.html">Water Intake</a></li>
+          <li><a href="calories.html">Calories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:support@fittrackpro.com">support@fittrackpro.com</a></li>
+          <li><a href="contact.html">Karachi, Pakistan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FitTrack Pro. All rights reserved.</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>
