@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -256,7 +257,7 @@ main {
 main:not(.home-main) {
   max-width: 1200px;
   margin: 0 auto;
-  padding: calc(var(--header-height) + 2rem) 1.5rem 2rem;
+  padding: 2rem 1.5rem;
 }
 
 .container {
@@ -295,10 +296,9 @@ main:not(.home-main) {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
-  margin-top: calc(-1 * var(--header-height));
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + 2.5rem);
 }
 
 .hero-carousel {
@@ -341,7 +341,7 @@ main:not(.home-main) {
   z-index: 2;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 0 1.5rem 4rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -495,7 +495,6 @@ main:not(.home-main) {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: calc(-1 * var(--header-height));
   padding: calc(var(--header-height) + 3rem) 1.5rem 3rem;
   overflow: hidden;
 }
@@ -1808,6 +1807,8 @@ tr:hover td {
     flex-direction: column;
     padding: 1rem;
     border-bottom: 1px solid var(--border);
+    z-index: 300;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   }
 
   .nav-links.open {
@@ -1850,11 +1851,19 @@ tr:hover td {
   .hero-card-stack img {
     height: 280px;
   }
+
+  .hero-full {
+    padding-top: calc(var(--header-height) + 1.5rem);
+  }
+
+  .page-banner {
+    padding-top: calc(var(--header-height) + 2rem);
+  }
 }
 
 @media (max-width: 480px) {
   main:not(.home-main) {
-    padding: calc(var(--header-height) + 1.5rem) 1rem 1.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .tracker-card {
